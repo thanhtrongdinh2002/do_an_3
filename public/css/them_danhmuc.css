@@ -1,0 +1,31 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
+.nendanhmuc{
+    background-image: url(../images/nền1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 92.5%;
+    padding: 1px 0;
+}
+.them-dm{
+    margin: 50px;
+    padding: 20px;
+    border: 1px rgb(255, 198, 245) solid;
+    margin: 90px 250px;
+    background-color: rgb(255, 249, 253);
+}
+.nendanhmuc .them-dm button {
+    margin-top: 20px;
+    margin-left: 100px;
+    padding: 3px;
+}
+.nendanhmuc .them-dm button:hover{
+    background-color: green;
+    color: violet;
+}

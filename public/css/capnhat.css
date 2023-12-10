@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
+.update-form img{
+    width: 200px;
+    height: 200px;
+}
+.update-form{ 
+    padding: 20px;
+    border: 1px rgb(255, 198, 245) solid;
+    margin: 90px 250px;
+    background-color: rgb(255, 249, 253);
+}
+.update-product{
+    background-image: url(../images/nền1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 92.5%;
+    padding: 1px 0;
+}
+.update-product .update-form div {
+    margin-bottom: 20px;
+    margin-left: 150px;
+}
+.update-product .update-form .capnhat{
+    margin-left: 500px;
+    margin-top: 50px;
+}
+.update-product .update-form .capnhat input{
+    padding: 3px;
+}
+.update-product .update-form .capnhat input:hover{
+    background-color: green;
+    color: violet;
+}

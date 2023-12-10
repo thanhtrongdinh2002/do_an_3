@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+tr{
+    display: flex;
+}
+tr>td{
+    flex: 1;
+    line-height: 100px;
+    font-weight: 700;
+}
+th{
+    flex: 1;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+.cart_empty{
+    text-align: center;
+    padding-top: 60px;
+}
+.btn_cart{
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 7px;
+    background-color: red;
+    border: 1px solid red;
+    font-weight: 800;
+}
+.btn_cart>a{
+    color: white;
+    text-decoration: none;
+}
+.btn_cart>a:hover{
+    color: white;
+}
+.t-border{
+    width: 100vw;
+}
+.gh{
+    padding: 10px;
+}
+.thanhtoan button{
+    margin-left: 48%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #09acef;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: white;
+}

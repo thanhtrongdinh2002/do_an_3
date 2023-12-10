@@ -1,0 +1,34 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
+.nensp{
+    background-image: url(../images/nền1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 92.5%;
+    padding: 1px 0;
+}
+.them-sp{
+    margin: 50px;
+    padding: 20px;
+    border: 1px rgb(255, 198, 245) solid;
+    margin: 90px 250px;
+    background-color: rgb(255, 249, 253);
+}
+.nensp .them-sp div{
+    margin-top: 15px;
+}
+.nensp .them-sp button{
+    margin-top: 50px;
+    margin-left: 400px;
+    padding: 3px
+}
+.nensp .them-sp button:hover{
+    background-color: green;
+    color: violet;
+}

@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nhap{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  min-height: 50vh;
+}
+.nhap>div {
+  display: flex;
+  margin: 2px;
+  margin-left: 20px;
+}
+.nhap>div label, input{
+  flex: 1;
+}
+.nhap>div input{
+  flex: 2;
+}
+.nhap>div label{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+.nhap button{
+  margin-left: 20px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #09acef;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: white;
+}

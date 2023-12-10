@@ -1,0 +1,65 @@
+.detail{
+    width: 80vw;
+    margin-left: 10vw;
+    display: flex;
+    background-color: #2f2323b5;
+    border-radius: 10px;
+}
+.detail>div{
+    flex: 1;
+}
+.detail>div:first-child{
+    margin-left: 50px;
+}
+.name{
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+.ingredient{
+    font-size: 20px;
+}
+.price{
+    margin: 0 0 15px 0;
+    height: 2em;
+    font-size: 22px;
+    color: #3d1a1a;
+
+}
+.detail>div:first-child>img{
+    max-width: 100%;
+}
+.bg{
+    background-image: url("../images/bg2.jpg");
+    padding: 15px 15px 10px 10px;
+    margin: 0;
+}
+.infor{
+    margin: 40px 40px 40px 40px;
+    padding: 50px 50px;
+    background-color: white;
+    border: solid 1px;
+    border-radius: 10px;
+    text-align: center;
+    font-family:sans-serif;
+}
+.img{
+    display: flex;
+    margin-top: 30px;
+    justify-self: center;
+
+}
+.name{
+    text-transform: uppercase;
+}
+.button{
+    margin-top: 200px;
+    background: #3d1a1a;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 25px;
+}
+.hr{
+    clear: both;
+}
