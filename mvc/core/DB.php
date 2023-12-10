@@ -4,7 +4,7 @@ class DB{
     protected $severname = "localhost";
     protected $username = "root";
     protected $password = "";
-    protected $dbname = "cake";
+    protected $dbname = "webquanao";
 
     public function __construct(){
         $this->conn = mysqli_connect($this->severname,$this->username,$this->password);

@@ -1,7 +1,7 @@
 <?php
 class ShowModel extends DB{
     public function ShowProduct(){
-        $sql = "SELECT * FROM product limit 10";
+        $sql = "SELECT * FROM product ";
         $query = mysqli_query($this->conn,$sql);
         return $query;
     }
