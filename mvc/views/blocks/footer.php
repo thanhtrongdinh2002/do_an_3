@@ -70,13 +70,10 @@
             HƯỚNG DẪN & HỖ TRỢ
           </h6>
           <p>
-            <a href="#!" class="text-reset">HƯỚNG DẪN ĐẶT BÁNH</a>
+            <a href="#!" class="text-reset">HƯỚNG DẪN ĐẶT ONLINE</a>
           </p>
           <p>
             <a href="#!" class="text-reset">HƯỚNG DẪN THANH TOÁN TRÊN WEBSITE</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">ORDER BÁNH KEM THEO NHU CẦU</a>
           </p>
           <p>
             <a href="#!" class="text-reset">CHĂM SÓC KHÁCH HÀNG</a>
