@@ -15,5 +15,8 @@
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" name="pass" id="exampleInputPassword1">
     </div>
-    <button type="submit" name="register" class="btn btn-primary">ĐĂNG KÝ</button>
+    <button style="width:100%" type="submit" name="register" class="btn btn-primary">ĐĂNG KÝ</button>
+    <a style="display: flex;
+    justify-content: center;
+    margin-top: 20px;" href="./login" class="btn btn-primary">ĐĂNG NHẬP</a>
 </form>

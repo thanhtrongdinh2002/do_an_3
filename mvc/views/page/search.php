@@ -13,7 +13,6 @@
               <a href="./detail_product.php/ShowDetail&idsp=<?php echo $row["idsp"] ?>">
                 <h5 class="card-title"><?php echo $row["tensp"] ?></h5>
               </a>
-              <p class="card-text"><?php echo $row["thanhphan"] ?></p>
               <a href="#" class="btn btn-primary"><?php echo number_format($row["gia"], 0, ",", ".") ?> vnd</a>
             </div>
           </div>

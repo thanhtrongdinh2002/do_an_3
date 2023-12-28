@@ -1,7 +1,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="giohang" style = height:1500px>
+<div class="giohang" >
     <?php
     if (isset($data["not"])) {
     ?>

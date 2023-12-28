@@ -14,7 +14,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-image: url(../public/images/baner-web-1.png);
+        background-image: url(../public/images/Banner.png);
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -24,7 +24,7 @@
     <?php
     require_once "../mvc1/mvc/views/page/" . $data["Page"] . ".php";
     ?>
-    
+
 </body>
 
 </html>
