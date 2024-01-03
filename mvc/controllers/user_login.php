@@ -262,35 +262,31 @@ class user_login extends Controller
     }
     public function verify_otp()
     {
-
-        // Kiểm tra xem có tồn tại session và trường mã OTP được gửi trong biểu mẫu hay không
-        if (isset($_SESSION['otp']) && isset($_POST['otp'])) {
+        if (isset($_SESSION['otp']) && isset($_GET['otp'])) {
             $otp = $_SESSION['otp'];
-            $enteredOTP = $_POST['otp'];
-
-            // So sánh mã OTP được nhập với mã OTP gốc
+            $enteredOTP = $_GET['otp'];
             if ($enteredOTP == $otp) {
-                // Mã OTP đúng
-                $message = 'Mã OTP đúng.';
+                $iduser = $_GET["iduser"];
+                $message = 'True';
                 $ex = $this->show1->product_type();
+                $re = $this->show2->check_thongtin($iduser);
                 $this->view("master1", [
                     "Page" => "thongtinkh",
-                    "data" => $message,
+                    "data" => $re,
+                    "mess" => $message,
                     "type" => $ex,
                 ]);
+                unset($_SESSION['otp']);
             } else {
-                // Mã OTP sai
-                $message = 'Mã OTP sai.';
+                $message = 'False';
                 $ex = $this->show1->product_type();
                 $this->view("master1", [
                     "Page" => "thongtinkh",
                     "data" => $message,
                     "type" => $ex,
                 ]);
+                unset($_SESSION['otp']);
             }
-
-            // Xóa session sau khi kiểm tra mã OTP
-            unset($_SESSION['otp']);
-        } 
+        }
     }
 }

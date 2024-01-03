@@ -25,10 +25,13 @@ while ($row = mysqli_fetch_array($data["data"])) {
         <input type="submit" name="sua_tt" value="Sửa thông tin">
     </form>
     <?php
-    if (!isset($data['message'])) {
+    if (!isset($_SESSION['otp'])) {
+        echo "OTP";
+    } else {
     ?>
-        <form method="POST" action="./verify_otp">
+        <form method="GET" action="./verify_otp">
             <div class="otp">
+                <input type="hidden" name="iduser" value="<?php echo $row["iduser"] ?>">
                 <label for="otp">Mã OTP</label>
                 <input type="text" name="otp" id="otp">
                 <button type="submit" name="submit">Xác nhận</button>
