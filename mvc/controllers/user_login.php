@@ -197,7 +197,7 @@ class user_login extends Controller
     public function them_thongtinkh()
     {
         if (isset($_POST["nhap_thongtin"])) {
-            if (empty($_POST["hoten"]) || empty($_POST["sdt"]) || empty($_POST["diachi"]) || strlen($_POST["sdt"]) < 11) {
+            if (empty($_POST["hoten"]) || empty($_POST["sdt"]) || empty($_POST["diachi"]) || empty($_POST["email"]) || strlen($_POST["sdt"]) < 11) {
                 $not = "Vui lòng nhập đầy đủ thông tin";
                 $ex = $this->show1->product_type();
                 $this->view("master1", [
@@ -210,7 +210,8 @@ class user_login extends Controller
                 $hoten = $_POST["hoten"];
                 $sdt = $_POST["sdt"];
                 $diachi = $_POST["diachi"];
-                $this->show2->them_thongtin($iduser, $hoten, $sdt, $diachi);
+                $email = $_POST["email"];
+                $this->show2->them_thongtin($iduser, $hoten, $sdt, $diachi, $email);
                 $re = $this->show2->check_thongtin($iduser);
                 $ex = $this->show1->product_type();
                 $this->view("master1", [
@@ -248,7 +249,8 @@ class user_login extends Controller
             $hoten = $_POST["hoten"];
             $sdt = $_POST["sdt"];
             $diachi = $_POST["diachi"];
-            $this->show2->luu_tt($iduser, $hoten, $sdt, $diachi);
+            $email = $_POST["email"];
+            $this->show2->luu_tt($iduser, $hoten, $sdt, $diachi, $email);
             $re = $this->show2->check_thongtin($iduser);
             $ex = $this->show1->product_type();
             $this->view("master1", [
@@ -257,5 +259,38 @@ class user_login extends Controller
                 "type" => $ex,
             ]);
         }
+    }
+    public function verify_otp()
+    {
+
+        // Kiểm tra xem có tồn tại session và trường mã OTP được gửi trong biểu mẫu hay không
+        if (isset($_SESSION['otp']) && isset($_POST['otp'])) {
+            $otp = $_SESSION['otp'];
+            $enteredOTP = $_POST['otp'];
+
+            // So sánh mã OTP được nhập với mã OTP gốc
+            if ($enteredOTP == $otp) {
+                // Mã OTP đúng
+                $message = 'Mã OTP đúng.';
+                $ex = $this->show1->product_type();
+                $this->view("master1", [
+                    "Page" => "thongtinkh",
+                    "data" => $message,
+                    "type" => $ex,
+                ]);
+            } else {
+                // Mã OTP sai
+                $message = 'Mã OTP sai.';
+                $ex = $this->show1->product_type();
+                $this->view("master1", [
+                    "Page" => "thongtinkh",
+                    "data" => $message,
+                    "type" => $ex,
+                ]);
+            }
+
+            // Xóa session sau khi kiểm tra mã OTP
+            unset($_SESSION['otp']);
+        } 
     }
 }

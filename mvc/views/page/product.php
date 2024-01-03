@@ -19,4 +19,3 @@
     ?>
   </div>
 </div>
-<a href="/mvc1/sendmail.php">send</a>

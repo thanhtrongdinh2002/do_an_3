@@ -15,6 +15,10 @@ while ($row = mysqli_fetch_array($data["data"])) {
             <label for="">Địa chỉ</label>
             <input type="text" name="diachi" value="<?php echo $row["diachi"] ?>">
         </div>
+        <div>
+            <label for="">Địa chỉ</label>
+            <input type="text" name="email" value="<?php echo $row["email"] ?>">
+        </div>
         <button type="submit" name="luu_tt">Lưu thông tin</button>
     </form>
 <?php

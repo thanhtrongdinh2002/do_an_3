@@ -40,8 +40,8 @@ class LoginModel extends DB{
         $query = mysqli_query($this->conn,$sql);
         return $query;
     }
-    public function them_thongtin($iduser, $hoten, $sdt, $diachi){
-        $sql="INSERT INTO `khachhang`(`iduser`,`hoten`,`sdt`,`diachi`) VALUES ('$iduser','$hoten','$sdt','$diachi')";
+    public function them_thongtin($iduser, $hoten, $sdt, $diachi, $email){
+        $sql="INSERT INTO `khachhang`(`iduser`,`hoten`,`sdt`,`diachi`, `email`) VALUES ('$iduser','$hoten','$sdt','$diachi','$email')";
         $query = mysqli_query($this->conn,$sql);
         return $query;
     }
@@ -60,8 +60,8 @@ class LoginModel extends DB{
         $query = mysqli_query($this->conn,$sql);
         return $query;
     }
-    public function luu_tt($iduser, $hoten, $sdt, $diachi){
-        $sql="UPDATE `khachhang` SET `hoten`='$hoten',`sdt`='$sdt',`diachi`='$diachi' WHERE `iduser` = '$iduser'";
+    public function luu_tt($iduser, $hoten, $sdt, $diachi, $email){
+        $sql="UPDATE `khachhang` SET `hoten`='$hoten',`sdt`='$sdt',`diachi`='$diachi',`email`='$email' WHERE `iduser` = '$iduser'";
         $query = mysqli_query($this->conn,$sql);
         return $query;
     }

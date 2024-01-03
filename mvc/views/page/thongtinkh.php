@@ -17,8 +17,27 @@ while ($row = mysqli_fetch_array($data["data"])) {
             <div>Địa chỉ: </div>
             <div><?php echo $row["diachi"]; ?></div>
         </div>
+        <div class="atrr">
+            <div style="margin-right: 150px;">Email: </div>
+            <div><?php echo $row["email"]; ?></div>
+            <a href="/mvc1/sendmail.php?email=<?php echo $row["email"]; ?>">Lấy mã OTP</a>
+        </div>
         <input type="submit" name="sua_tt" value="Sửa thông tin">
     </form>
+    <?php
+    if (!isset($data['message'])) {
+    ?>
+        <form method="POST" action="./verify_otp">
+            <div class="otp">
+                <label for="otp">Mã OTP</label>
+                <input type="text" name="otp" id="otp">
+                <button type="submit" name="submit">Xác nhận</button>
+            </div>
+        </form>
+    <?php
+    }
+    ?>
+
 <?php
 }
 ?>
