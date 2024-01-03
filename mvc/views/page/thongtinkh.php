@@ -25,9 +25,7 @@ while ($row = mysqli_fetch_array($data["data"])) {
         <input type="submit" name="sua_tt" value="Sửa thông tin">
     </form>
     <?php
-    if (!isset($_SESSION['otp'])) {
-        echo "OTP";
-    } else {
+    if (isset($_SESSION['otp'])) {
     ?>
         <form method="GET" action="./verify_otp">
             <div class="otp">
@@ -37,6 +35,10 @@ while ($row = mysqli_fetch_array($data["data"])) {
                 <button type="submit" name="submit">Xác nhận</button>
             </div>
         </form>
+    <?php
+    } else {
+        echo " "
+    ?>
     <?php
     }
     ?>
