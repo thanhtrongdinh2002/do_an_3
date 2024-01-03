@@ -48,9 +48,9 @@ class user_login extends Controller
                     }
                     setcookie('iduser', $iduser, time() + (86400 * 1), "/");
                     $_SESSION["quyen"] = $row['quyen'];
-                    if ($row["quyen"] == 1) {
+                    if ($row["quyen"] == "admin") {
                         header('location:../admin/AdminShow');
-                    } elseif ($row["quyen"] == 0) {
+                    } elseif ($row["quyen"] == "khachhang") {
                         header("Location:../");
                     }
                 } else {

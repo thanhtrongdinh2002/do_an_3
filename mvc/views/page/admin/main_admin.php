@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (isset($_SESSION['quyen'])) {
-    if ($_SESSION['quyen'] != 1 ) {
+    if ($_SESSION['quyen'] != "admin" ) {
         header("location:../");
     }
 }else{
@@ -16,31 +16,28 @@ if(isset($data["not"])){
 }
 ?>
 <div class="list-product">
-    <h1 >Danh sách sản phẩm</h1>
-    <div class="btn-main">
-        <button><a href="./nhap_sp">Thêm sản phẩm</a></button>
-        <button><a href="./nhap_danhmuc">Thêm danh mục</a></button>
+    <h1 >Danh sách User</h1>
+    <div>
+        <button><a href="./nhap_taikhoan">Thêm Tài khoản</a></button>
     </div>
     <div class="nen">
         <table>
             <tr>
-                <th>Hình ảnh</th>
-                <th>Tên sản phẩm</th>
-                <th>Thành phần</th>
-                <th>Giá</th>
-                <th>Xoá</th>
+                <th>Tên tài khoản</th>
+                <th>Mật khẩu</th>
+                <th>Quyền</th>
                 <th>Cập nhật</th>
+                <th>Xoá</th>
             </tr>
             <?php
             while ($row = mysqli_fetch_array($data["data"])) {
             ?>
                 <tr style="border: 1px solid black;">
-                    <td><img style="width:100px; height:100px;padding:5px;" src="/mvc1/public/images/<?php echo $row["hinhanh"] ?>" class="card-img-top" alt="..."></td>
-                    <td><?php echo $row["tensp"] ?></td>
-                    <td><?php echo $row["thanhphan"] ?></td>
-                    <td><?php echo number_format($row['gia'], 0, ",", ".") ?>₫</td>
-                    <td><a href="./DeleteProduct&idsp=<?php echo $row["idsp"]?>"><i class="fa-solid fa-trash"></i></a></td>
-                    <td><a href="./capnhat&idsp=<?php echo $row["idsp"]?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><?php echo $row["username"] ?></td>
+                    <td><?php echo $row["pass"] ?></td>
+                    <td><?php echo $row["quyen"] ?></td>
+                    <td><a href="./editTaikhoan&uid=<?php echo $row["uid"]?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a href="./DeleteTaikhoan&uid=<?php echo $row["uid"]?>"><i class="fa-solid fa-trash"></i></a></td>
                 <?php
             }
                 ?>
