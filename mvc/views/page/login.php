@@ -2,7 +2,7 @@
 <form class="form-login" action="./login" method="POST">
     <div class="mb-3">
         <label for="example" class="form-label">Username</label>
-        <input type="text" class="form-control" name="username" id="example" aria-describedby="emailHelp">
+        <input type="email" class="form-control" name="username" id="example" aria-describedby="emailHelp">
     </div>
     <?php
     if (isset($data["not"]) and $data["not"] != "") {

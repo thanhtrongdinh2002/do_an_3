@@ -15,10 +15,6 @@
         <label for="">Địa chỉ</label>
         <input type="text" name="diachi">
     </div>
-    <div class="kh">
-        <label for="">Email</label>
-        <input type="email" name="email" id="email">
-    </div>
     <?php
     if (isset($data["not"])) {
     ?>

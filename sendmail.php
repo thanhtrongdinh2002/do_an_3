@@ -7,8 +7,11 @@ require 'PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$mail = new PHPMailer();                              // Khai báo hàm
-$email = $_GET['email'];
+$mail = new PHPMailer();                         // Khai báo hàm
+$email = $_POST['email'];
+$pass = $_POST['pass'];
+$_SESSION['username'] = $email;
+$_SESSION['pass'] = $pass;
 $otp = rand(100000, 999999);
 $_SESSION['otp'] = $otp;
 try {
@@ -42,10 +45,7 @@ try {
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Message has been sent';
-    // Chuyển hướng người dùng đến trang trước đó
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    header('Location: /mvc1/user_login/check_verify_otp');
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }

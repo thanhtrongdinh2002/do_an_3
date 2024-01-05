@@ -76,20 +76,68 @@ class user_login extends Controller
             $pass = $_POST["pass"];
             if ($username == "" or $pass == "") {
                 $not = "Tài khoản hoặc mật khẩu không được để trống";
+                return $this->view("master2", [
+                    "Page" => "register",
+                    "not" => $not,
+                ]);
             } else {
                 $re = $this->show2->HandleLogin($username, $pass);
                 if (mysqli_fetch_row($re) > 0) {
                     $not = "Tài khoản đã tồn tại";
+                    return $this->view("master2", [
+                        "Page" => "register",
+                        "not" => $not,
+                    ]);
                 } else {
-                    $this->show2->HandleRegister($username, $pass);
-                    header("Location:../");
+                    return $this->view("master2", [
+                        "Page" => "verify_otp",
+                        "data" => $username,
+                        "pass" => $pass
+                    ]);
                 }
             }
         }
+    }
+    public function check_verify_otp()
+    {
+        $username = $_SESSION["username"];
+        $pass = $_SESSION["pass"];
         return $this->view("master2", [
-            "Page" => "register",
-            "not" => $not,
+            "Page" => "check_verify_otp",
+            "data" => $username,
+            "pass" => $pass
         ]);
+    }
+    public function register_otp()
+    {
+        $username = $_SESSION["username"];
+        $pass = $_SESSION["pass"];
+        if (!isset($_SESSION)) {
+        session_start();
+        }
+        // Kiểm tra xem người dùng đã gửi biểu mẫu chưa
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Lấy số OTP từ người dùng nhập vào
+            $userOTP = $_POST['otp'];
+
+            // Lấy số OTP đã lưu trong session
+            $storedOTP = $_SESSION['otp'];
+
+            // Kiểm tra xem số OTP nhập vào có khớp với số OTP đã lưu không
+            if ($userOTP == $storedOTP) {
+                // Số OTP khớp, xử lý logic tiếp theo tại đây
+                $this->show2->HandleRegister($username, $pass);
+                unset($_SESSION['otp']);
+                header("Location:../");
+            } else {
+                return $this->view("master2", [
+                    "Page" => "check_verify_otp",
+                    "data" => $username,
+                    "pass" => $pass,
+                    "mess" => 'Số OTP không hợp lệ!',
+                ]);
+            }
+        }
     }
     public function them_giohang()
     {
@@ -197,7 +245,7 @@ class user_login extends Controller
     public function them_thongtinkh()
     {
         if (isset($_POST["nhap_thongtin"])) {
-            if (empty($_POST["hoten"]) || empty($_POST["sdt"]) || empty($_POST["diachi"]) || empty($_POST["email"]) || strlen($_POST["sdt"]) < 11) {
+            if (empty($_POST["hoten"]) || empty($_POST["sdt"]) || empty($_POST["diachi"]) || strlen($_POST["sdt"]) < 11) {
                 $not = "Vui lòng nhập đầy đủ thông tin";
                 $ex = $this->show1->product_type();
                 $this->view("master1", [
@@ -210,8 +258,7 @@ class user_login extends Controller
                 $hoten = $_POST["hoten"];
                 $sdt = $_POST["sdt"];
                 $diachi = $_POST["diachi"];
-                $email = $_POST["email"];
-                $this->show2->them_thongtin($iduser, $hoten, $sdt, $diachi, $email);
+                $this->show2->them_thongtin($iduser, $hoten, $sdt, $diachi);
                 $re = $this->show2->check_thongtin($iduser);
                 $ex = $this->show1->product_type();
                 $this->view("master1", [
@@ -249,8 +296,7 @@ class user_login extends Controller
             $hoten = $_POST["hoten"];
             $sdt = $_POST["sdt"];
             $diachi = $_POST["diachi"];
-            $email = $_POST["email"];
-            $this->show2->luu_tt($iduser, $hoten, $sdt, $diachi, $email);
+            $this->show2->luu_tt($iduser, $hoten, $sdt, $diachi);
             $re = $this->show2->check_thongtin($iduser);
             $ex = $this->show1->product_type();
             $this->view("master1", [
@@ -258,35 +304,6 @@ class user_login extends Controller
                 "data" => $re,
                 "type" => $ex,
             ]);
-        }
-    }
-    public function verify_otp()
-    {
-        if (isset($_SESSION['otp']) && isset($_GET['otp'])) {
-            $otp = $_SESSION['otp'];
-            $enteredOTP = $_GET['otp'];
-            if ($enteredOTP == $otp) {
-                $iduser = $_GET["iduser"];
-                $message = 'True';
-                $ex = $this->show1->product_type();
-                $re = $this->show2->check_thongtin($iduser);
-                $this->view("master1", [
-                    "Page" => "thongtinkh",
-                    "data" => $re,
-                    "mess" => $message,
-                    "type" => $ex,
-                ]);
-                unset($_SESSION['otp']);
-            } else {
-                $message = 'False';
-                $ex = $this->show1->product_type();
-                $this->view("master1", [
-                    "Page" => "thongtinkh",
-                    "data" => $message,
-                    "type" => $ex,
-                ]);
-                unset($_SESSION['otp']);
-            }
         }
     }
 }
